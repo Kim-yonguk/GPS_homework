@@ -1,6 +1,7 @@
 package com.example.a1a1a1.gps_homework;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         // LocationManager 객체를 얻어온다
         final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-
         tb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
             //Network 위치제공자에 의한 위치변화
             //Network 위치는 Gps에 비해 정확도가 많이 떨어진다.
             tv.setText("\n위도 : " + longitude + "\n경도 : " + latitude);
+            Uri uri = Uri.parse("geo:longitude,latitude");
+            //반포한강공원:37.511545, 126.997297
+            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            startActivity(intent);
+
+
         }
         public void onProviderDisabled(String provider) {
             // Disabled시
@@ -100,10 +106,7 @@ public class MainActivity extends AppCompatActivity {
             // 변경시
             Log.d("test", "onStatusChanged, provider:" + provider + ", status:" + status + " ,Bundle:" + extras);
         }
-        Uri uri = Uri.parse("geo:37.511545,126.997297");
-//                    //반포한강공원:37.511545, 126.997297
-//                    Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-//                    startActivity(intent);
+
 
     };
 } // end of class
