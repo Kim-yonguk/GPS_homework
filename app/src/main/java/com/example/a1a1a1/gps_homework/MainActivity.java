@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +14,8 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    //static final LatLng SEOUL=new LatLng(37.527089,127.028480);
+    //private GoogleMap googleMap;
     TextView tv;
     ToggleButton tb;
 
@@ -97,5 +100,10 @@ public class MainActivity extends AppCompatActivity {
             // 변경시
             Log.d("test", "onStatusChanged, provider:" + provider + ", status:" + status + " ,Bundle:" + extras);
         }
+        Uri uri = Uri.parse("geo:37.511545,126.997297");
+//                    //반포한강공원:37.511545, 126.997297
+//                    Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+//                    startActivity(intent);
+
     };
 } // end of class
